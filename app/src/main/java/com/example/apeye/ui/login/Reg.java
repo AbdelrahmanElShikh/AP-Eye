@@ -41,12 +41,14 @@ public class Reg extends AppCompatActivity {
         reg_email_field = findViewById(R.id.email_reg);
         reg_pass_field = findViewById(R.id.password_reg);
         progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
         final Button reg_btn = findViewById(R.id.create_acc_button);
         mAuth = FirebaseAuth.getInstance();
 
         reg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 String email = reg_email_field.getText().toString();
                 String pass = reg_pass_field.getText().toString();
 
@@ -56,6 +58,7 @@ public class Reg extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 reg_btn.setEnabled(false);
+                                progressBar.setVisibility(View.INVISIBLE);
                                 MainActivity.FirstRun = false;
                                 Intent intent = new Intent(Reg.this, UserInformation.class);
                                 intent.putExtra("comingFrom",1);
@@ -63,6 +66,7 @@ public class Reg extends AppCompatActivity {
                                 finish();
 
                             }else {
+                                progressBar.setVisibility(View.INVISIBLE);
                                 String errorMessage = Objects.requireNonNull(task.getException()).getMessage();
                                 Toast.makeText(Reg.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
                             }
