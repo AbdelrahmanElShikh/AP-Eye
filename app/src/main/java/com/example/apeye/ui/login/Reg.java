@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.apeye.R;
@@ -27,6 +28,7 @@ public class Reg extends AppCompatActivity {
     private EditText reg_email_field;
     private EditText reg_pass_field;
     FirebaseAuth mAuth ;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class Reg extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         reg_email_field = findViewById(R.id.email_reg);
         reg_pass_field = findViewById(R.id.password_reg);
+        progressBar = findViewById(R.id.progressBar);
         final Button reg_btn = findViewById(R.id.create_acc_button);
         mAuth = FirebaseAuth.getInstance();
 

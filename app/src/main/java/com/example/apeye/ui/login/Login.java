@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity {
     private EditText loginEmailText;
     private EditText loginPassText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,6 @@ public class Login extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.login);
 
 
